@@ -1,7 +1,7 @@
 The Ramen Unity Style Guide
 ===========================
 
-### For file structure, naming conventions and other things
+> For file structure, naming conventions and other things
 
 These are guidelines for keeping your project organized and allow your team to quickly find the assets they need. Games are large projects that span several months, thus having standardized conventions that make sense will avoid headaches in the long run.
 
@@ -10,19 +10,19 @@ Note that your team and project might have different needs, use different softwa
 # Table of Contents
 
 - [Asset Naming](#asset-naming)
-    - [Folders](#folders)
-    - [Source code](#source-code)
-    - [Non-code assets](#non-code-assets)
+  - [Folders](#folders)
+  - [Source code](#source-code)
+  - [Non-code assets](#non-code-assets)
 - [Directory/File structure](#directory-file-structure)
-    - [Assets](#assets)
-    - [Scripts](#scripts)
-    - [Models](#models)
+  - [Assets](#assets)
+  - [Scripts](#scripts)
+  - [Models](#models)
 - [Workflow](#workflow)
-    - [Models](#models)
-    - [Textures](#textures)
-    - [Configuration files](#configuration-files)
-    - [Localization](#localization)
-    - [Audio](#audio)
+  - [Models](#models)
+  - [Textures](#textures)
+  - [Configuration files](#configuration-files)
+  - [Localization](#localization)
+  - [Audio](#audio)
 - [Be Consistent](#be-consistent)
 
 # Asset Naming
@@ -53,11 +53,24 @@ Use the naming convention of the programming language. For C# and shader files u
 
 ## Non-Code Assets
 
+`snake_case`
+
 Use `tree_small` not `small_tree`. While the latter sound better in English, it is much more effective to group all tree objects together instead of all small objects.
 
 `camelCase` where necessary. Use `weapon_miniGun` instead of `weapon_gun_mini`. Avoid this if possible, for example, `vehicles_fighterJet` should be `vehicles_jet_fighter` if you plan to have multiple types of jets.
 
 Prefer using descriptive suffixes instead of iterative: `vehicle_truck_damaged` not `vehicle_truck_01`. If using numbers as a suffix, always use 2 digits. And **do not** use it as a versioning system! Use `git` or something similar.
+
+### Scriptable Objects
+
+`SCREAMING_SNAKE_CASE`
+
+Use a prefix that defines the type of the scripo.
+
+```
+EVENT_GAME_START        # Game Event
+FLOAT_PLAYER_HEALTH     # Reference Variable
+```
 
 ### Persistent/Important GameObjects
 
@@ -87,37 +100,21 @@ Assets
 +---Art
 |   +---Materials
 |   +---Models      # FBX and BLEND files
-|   +---Textures    # PNG files
+|   \---Textures    # PNG files
 +---Audio
 |   +---Music
 |   \---Sound       # Samples and sound effects
 +---Code
 |   +---Scripts     # C# scripts
 |   \---Shaders     # Shader files and shader graphs
-+---Docs            # Wiki, concept art, marketing material
 +---Level           # Anything related to game design in Unity
 |   +---Prefabs
 |   +---Scenes
 |   \---UI
++---Scripos         # Scriptable Objects with global game data
+|   +---Events
+|   \---Variables
 \---Resources       # Configuration files, localization text and other user files.
-```
-
-## Assets (alternative)
-
-```
-Assets
-+---Art
-|   +---Materials
-|   +---Models      # FBX and BLEND files
-|   +---Music
-|   +---Prefabs
-|   +---Sound       # Samples and sound effects
-|   +---Textures
-|   +---UI
-+---Levels          # Unity scene files
-+---Src             # C# scripts and shaders
-|   +---Framework
-|   \---Shaders
 ```
 
 ## Scripts
@@ -196,10 +193,10 @@ R       | Specularity       | Roughness
 G       | Glossiness        | Metallic
 B       | Ambient Occlusion | Ambient Occlusion
 
-#### The blue channel can vary depending on the type of material:
+#### The blue channel can vary depending on the type of material
 
- - For character materials use the `B` channel for *subsurface opacity/strength*
- - For anisotropic materials use the `B` channel for the *anisotropic direction map*
+- For character materials use the `B` channel for *subsurface opacity/strength*
+- For anisotropic materials use the `B` channel for the *anisotropic direction map*
 
 ## Configuration Files
 
