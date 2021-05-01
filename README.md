@@ -61,6 +61,17 @@ Use `tree_small` not `small_tree`. While the latter sound better in English, it 
 
 Prefer using descriptive suffixes instead of iterative: `vehicle_truck_damaged` not `vehicle_truck_01`. If using numbers as a suffix, always use 2 digits. And **do not** use it as a versioning system! Use `git` or something similar.
 
+### Prefabs
+
+Add `pf` as a prefix to prefab assets.
+Add `variant` as a suffix to variants.
+
+```
+pf_player
+pf_weapon_sword         
+pf_weapon_sword_variant   # variant of the sword weapon
+```
+
 ### Scriptable Objects
 
 `SCREAMING_SNAKE_CASE`
