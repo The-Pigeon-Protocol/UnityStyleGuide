@@ -41,12 +41,6 @@ Try to have only one file type per folder. Use `Textures/Trees`, `Models/Trees` 
 
 If your project contains multiple environments or art sets, use the asset type for the parent directory: `Trees/Jungle`, `Trees/City` not `Jungle/Trees`, `City/Trees`. Since it makes it easier to compare similar assets from different art sets to ensure continuity across art sets.
 
-### Debug Folders
-
-`[PascalCase]`
-
-This signifies that the folder only contains assets that are not ready for production. For example, having an `[Assets]` and `Assets` folder.
-
 ## Source Code
 
 Use the naming convention of the programming language. For C# and shader files use `PascalCase`, as per C# convention.
@@ -71,7 +65,7 @@ class MyClass : MonoBehaviour
   #endregion
 
   #region Constants
-  private const int ANSWER = 42;
+  private const int ULTIMATE_ANSWER = 42;
   private const string PASSWORD = "fortytwo";
   #endregion
 
@@ -113,14 +107,14 @@ Use a leading underscore to make object instances that are not specific to the c
 
 ### Debug Objects
 
-`[SNAKE_CASE]`
+`debug_someCase`
 
-Enclose objects that are only being used for debugging/testing and are not part of the release with brackets.
+Mark objects that are only being used for debugging/testing and are not part of the release with a prefix `debug`.
 
 ```
-[PlayerTestScene]   # Debug scene
-[DECK_NO_ENEMIES]   # Debug scripo
-[enemy_burger]      # Debug prefab
+DebugPlayerTestScene    # Debug scene
+DEBUG_DECK_NO_ENEMIES   # Debug scripo
+debug_enemy_burger      # Debug prefab
 ```
 
 # Directory/File Structure
