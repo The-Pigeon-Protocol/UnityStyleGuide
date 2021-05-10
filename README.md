@@ -50,6 +50,39 @@ This signifies that the folder only contains assets that are not ready for produ
 ## Source Code
 
 Use the naming convention of the programming language. For C# and shader files use `PascalCase`, as per C# convention.
+Use regions for organising classes if they have a lot of properties.
+
+```C#
+class MyClass : MonoBehaviour
+{
+  #region Editor Properties
+  [SerializedField] float _foo = 0f;
+  [SerializedField] GameObject _bar = default;
+  #endregion
+
+  #region Public Properties
+  public float Foo => _foo;
+  public bool IsActive {get; set;} = true;
+  #endregion
+
+  #region Private Members
+  private int _secretNumber = 0;
+  private bool _isSecret = true;
+  #endregion
+
+  #region Constants
+  private const int ANSWER = 42;
+  private const string PASSWORD = "fortytwo";
+  #endregion
+
+
+  // Unity methods and callbacks
+
+  // Public methods
+
+  // Private utility methods
+}
+```
 
 ## Non-Code Assets
 
@@ -60,17 +93,6 @@ Use `tree_small` not `small_tree`. While the latter sound better in English, it 
 `camelCase` where necessary. Use `weapon_miniGun` instead of `weapon_gun_mini`. Avoid this if possible, for example, `vehicles_fighterJet` should be `vehicles_jet_fighter` if you plan to have multiple types of jets.
 
 Prefer using descriptive suffixes instead of iterative: `vehicle_truck_damaged` not `vehicle_truck_01`. If using numbers as a suffix, always use 2 digits. And **do not** use it as a versioning system! Use `git` or something similar.
-
-### Prefabs
-
-Add `pf` as a prefix to prefab assets.
-Add `variant` as a suffix to variants.
-
-```
-pf_player
-pf_weapon_sword         
-pf_weapon_sword_variant   # variant of the sword weapon
-```
 
 ### Scriptable Objects
 
@@ -95,12 +117,18 @@ Use a leading underscore to make object instances that are not specific to the c
 
 Enclose objects that are only being used for debugging/testing and are not part of the release with brackets.
 
+```
+[PlayerTestScene]   # Debug scene
+[DECK_NO_ENEMIES]   # Debug scripo
+[enemy_burger]      # Debug prefab
+```
+
 # Directory/File Structure
 
 ```
 Root
 +---Assets
-+---Build
++---bin             # Builds
 \---Tools           # Programs to aid development: compilers, asset managers etc.
 ```
 
@@ -109,9 +137,11 @@ Root
 ```
 Assets
 +---Art
+|   +---Animations  # Animation Clips and Animator Controller
 |   +---Materials
 |   +---Models      # FBX and BLEND files
-|   \---Textures    # PNG files
+|   +---Textures    # PNG files
+|   \---VFX
 +---Audio
 |   +---Music
 |   \---Sound       # Samples and sound effects
@@ -138,8 +168,8 @@ The Scripts folder varies depending on the project, however, `Environment`, `Fra
 
 ```
 Scripts
-+---Environment
-+---Framework
++---Environment     # Game systems and base classes
++---Framework       # PigeonProject base franework
 +---NPC
 +---Player
 +---Tools
