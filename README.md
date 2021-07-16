@@ -13,7 +13,7 @@ Note that your team and project might have different needs, use different softwa
   - [Folders](#folders)
   - [Source code](#source-code)
   - [Non-code assets](#non-code-assets)
-- [Directory/File structure](#directory-file-structure)
+- [Directory and File Structure](#directory-and-file-structure)
   - [Assets](#assets)
   - [Scripts](#scripts)
   - [Models](#models)
@@ -78,6 +78,18 @@ class MyClass : MonoBehaviour
 }
 ```
 
+
+## Scenes
+
+`PascalCaseScene`
+
+Make sure to give scenes sensible names that indicate their purpose.
+
+For personal testing scenes consider putting them into a separate folder related to you. E.g. `Assets/Level/Scenes/Bob/PlayerTestScene`.
+
+Having multiple developers work on the same scene at the same time leads to (possibly unresolvable) merge issues. Prefer a workflow where you work on features in a dedicated feature or testing scene that only you access and then exporting to prefabs. Integration to production scenes needs be coordinated and you have to communicate over who is working on those scenes at any given moment.
+
+
 ## Non-Code Assets
 
 `snake_case`
@@ -117,7 +129,7 @@ DEBUG_DECK_NO_ENEMIES   # Debug scripo
 debug_enemy_burger      # Debug prefab
 ```
 
-# Directory/File Structure
+# Directory and File Structure
 
 ```
 Root
